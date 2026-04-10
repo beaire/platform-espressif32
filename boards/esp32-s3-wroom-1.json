@@ -1,16 +1,20 @@
 {
   "build": {
-    "arduino":{
+    "arduino": {
       "ldscript": "esp32s3_out.ld",
-      "partitions": "default_8MB.csv"
+      "memory_type": "qio_opi",
+      "partitions": "default_16MB.csv"
     },
-    "core": "esp32",
+    "core": "esp32-s3",
     "extra_flags": [
-      "-DARDUINO_ESP32S3_DEV",
+      "-DARDUINO_ESP32_S3N16R8",
+      "-DBOARD_HAS_PSRAM",
       "-DARDUINO_USB_MODE=1",
+      "-DARDUINO_USB_CDC_ON_BOOT=1",
       "-DARDUINO_RUNNING_CORE=1",
       "-DARDUINO_EVENT_RUNNING_CORE=1"
     ],
+    
     "f_cpu": "240000000L",
     "f_flash": "80000000L",
     "flash_mode": "qio",
@@ -21,7 +25,7 @@
       ]
     ],
     "mcu": "esp32s3",
-    "variant": "esp32s3"
+    "variant": "esp32_s3_wroom1_n16r8"
   },
   "connectivity": [
     "bluetooth",
@@ -29,23 +33,28 @@
   ],
   "debug": {
     "default_tool": "esp-builtin",
+    "openocd_target": "esp32s3.cfg"
     "onboard_tools": [
       "esp-builtin"
-    ],
-    "openocd_target": "esp32s3.cfg"
+    ]
   },
   "frameworks": [
     "arduino",
-    "espidf"
+    "espidf",
   ],
-  "name": "Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)",
+  "name": "Espressif ESP32-S3-WROOM-1-N16R8 (ESP32-S3-DEVKITC-1-N16R8)",
   "upload": {
-    "flash_size": "8MB",
+    "flash_size": "16MB",
     "maximum_ram_size": 327680,
-    "maximum_size": 8388608,
+    "maximum_size": 16777216,
     "require_upload_port": true,
     "speed": 460800
   },
-  "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html",
-  "vendor": "Espressif"
+  {
+  "url": "https://lonelybinary.com/products/s3?variant=43784065712285",
+  "vendor": "Lonely Binary"
 }
+{
+  "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+  "vendor": "Espressif"
+},
